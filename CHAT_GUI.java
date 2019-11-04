@@ -61,7 +61,7 @@ public class CHAT_GUI extends JFrame {
 		private JTextArea inputTF;
 		
 		public CHATBOX(){
-			receive();
+			//receive();
 			
 			setLayout(new BorderLayout());
 			prompt = new JLabel("Now connected to "+ "IP: " + dest_IP + " on Port: " + port);
@@ -92,13 +92,18 @@ public class CHAT_GUI extends JFrame {
 		
 		@Override
 		public void keyPressed(KeyEvent e) {//send()
+			packet = socket.receive();
 			if(e.getKeyCode() == KeyEvent.VK_ENTER){
 				msg = "\n" + myAddress + ": " + inputTF.getText();
 				outputTF.append(msg);
-				//socket.send(msg, dest_IP_num, portNum);
-				System.out.println("Message: "+ inputTF.getText() + " sent to " + "IP: " + dest_IP + " on Port: " + port);
+				socket.send(msg, dest_IP_num, portNum);
+				//System.out.println("Message: "+ inputTF.getText() + " sent to " + "IP: " + dest_IP + " on Port: " + port);
 				inputTF.setText("");//clear input box
 				inputTF.setCaretPosition(-1);//put cursor back where it was
+			}
+			if(packet != null){
+				msg = new String(packet.getData());
+				outputTF.append("\n" + packet.getAddress() + ": " + msg);
 			}
 		}
 		@Override public void keyTyped(KeyEvent e) {} 
