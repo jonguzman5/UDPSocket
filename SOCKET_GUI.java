@@ -28,18 +28,18 @@ public class SOCKET_GUI extends JFrame {
 		add(jpMain);
 	}
 	private class MENU extends JPanel implements ActionListener {
-		private JTextArea IP;
+		private JTextArea dest_IP;
 		private JTextArea port;
 		private JButton start;
 		
 		public MENU(){
-			IP = new JTextArea(2, 35);
+			dest_IP = new JTextArea(2, 35);
 			port = new JTextArea(2, 35);
 			start = new JButton("Start");
 			start.addActionListener(this);
 			start.setEnabled(true);
 			
-			add(IP);
+			add(dest_IP);
 			add(port);
 			add(start);
 		}
@@ -47,7 +47,7 @@ public class SOCKET_GUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton btnClicked = (JButton)e.getSource();
-			CHAT_GUI chat_gui = new CHAT_GUI();
+			CHAT_GUI chat_gui = new CHAT_GUI(dest_IP.getText(), port.getText());
 			if(btnClicked.equals(start)){	
 				chat_gui.setVisible(true);
 			}
