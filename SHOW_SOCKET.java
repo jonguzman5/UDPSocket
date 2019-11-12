@@ -7,6 +7,9 @@ public class SHOW_SOCKET {
 			public void run() {
 				SOCKET_GUI SOCKET_GUI = new SOCKET_GUI();
 			}
-		});
+		});		
+		do {
+			SOCKET_GUI.receive();
+		} while(true);
 	}
 }

@@ -18,7 +18,7 @@ public class Socket {
 	private Thread receiveThread;
 	private boolean receiveThreadShouldKeepRunning = true;
 	
-	private ConcurrentLinkedQueue<DatagramPacket> messageQueue = 
+	public static ConcurrentLinkedQueue<DatagramPacket> messageQueue = 
 			new ConcurrentLinkedQueue<DatagramPacket>();
 	
 	public Socket(int myPortNumber) {
