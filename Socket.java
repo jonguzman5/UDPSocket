@@ -35,7 +35,7 @@ public class Socket {
 		System.out.println("My Port Number = " + this.myPortNumber);
 		
 		try {
-			this.mySocket = new DatagramSocket(myPortNumber, myAddress);
+			this.mySocket = new DatagramSocket(myPortNumber);
 		} catch (SocketException se) {
 			se.printStackTrace();
 			System.exit(-1);

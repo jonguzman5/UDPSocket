@@ -6,10 +6,11 @@ public class SHOW_SOCKET {
 			@Override
 			public void run() {
 				SOCKET_GUI SOCKET_GUI = new SOCKET_GUI();
+				
 			}
-		});		
-		do {
-			SOCKET_GUI.receive();
-		} while(true);
+		});	
+		
+		SOCKET_GUI.receive();		
+		
 	}
 }

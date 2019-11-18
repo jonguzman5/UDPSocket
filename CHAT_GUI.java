@@ -22,14 +22,9 @@ public class CHAT_GUI extends JFrame {
 	private JPanel jpMain;
 	CHATBOX chatbox;
 	public static Socket socket;
-	public static String dest_IP;
 	public static InetAddress dest_IP_num;
-	
-	public static String port;
 	public static int port_num;
-	
 	public static InetAddress myAddress;
-	public static DatagramPacket packet;
 	public static String msg;
 	
 	public CHAT_GUI(Socket socket, InetAddress dest_IP_num, int port_num){
@@ -84,10 +79,12 @@ public class CHAT_GUI extends JFrame {
 			if(e.getKeyCode() == KeyEvent.VK_ENTER){
 				msg = "\n" + myAddress + ": " + inputTF.getText();
 				outputTF.append(msg);
+				
+				System.out.println(msg);
 				socket.send(msg, dest_IP_num, port_num);
 				//System.out.println("Message: "+ inputTF.getText() + " sent to " + "IP: " + dest_IP_num + " on Port: " + port_num);
 				inputTF.setText("");//clear input box
-				inputTF.setCaretPosition(-1);//put cursor back where it was
+				//inputTF.setCaretPosition(-1);//put cursor back where it was
 			}
 		}
 		@Override public void keyTyped(KeyEvent e) {} 
